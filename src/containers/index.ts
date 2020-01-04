@@ -1,1 +1,2 @@
-export { default as VideoPlaylistContainer } from "containers/VideoPlaylistContainer/VideoPlaylistContainer";
+export { default as VideoPlaylistContainer } from "./VideoPlaylistContainer/VideoPlaylistContainer";
+export { default as AddVideoContainer } from "./AddVideoContainer/AddVideoContainer";
