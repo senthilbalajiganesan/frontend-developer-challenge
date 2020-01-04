@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/node": "^12.12.24",
-    "@types/react": "^16.9.17",
-    "@types/react-dom": "^16.9.4",
     "css-vars": "^2.2.0",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
@@ -13,7 +10,13 @@
     "react-player": "^1.14.2",
     "react-redux": "^7.1.3",
     "react-scripts": "3.3.0",
-    "redux": "^4.0.5",
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.24",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-redux": "^7.1.5",
     "typescript": "^3.7.4"
   },
   "scripts": {

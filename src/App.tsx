@@ -1,8 +1,19 @@
 import React from "react";
-import "styles/index.scss";
+import { Provider } from "react-redux";
+import store from "store";
+import "./App.scss";
+import { VideoPlaylistContainer } from "containers";
+import { init } from "utils";
 
+init();
 const App: React.FC = () => {
-  return <div className="app"></div>;
+  return (
+    <Provider store={store}>
+      <div className="app">
+        <VideoPlaylistContainer />
+      </div>
+    </Provider>
+  );
 };
 
 export default App;
