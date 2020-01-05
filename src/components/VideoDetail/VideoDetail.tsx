@@ -6,10 +6,18 @@ export default (props: IProps) => {
   const { videoDetail } = props;
   return (
     <div className="video-detail-block">
-      <img className="video-detail__image" src={videoDetail.thumbnail_url} />
+      <img
+        className="video-detail__image"
+        src={videoDetail.thumbnail_url}
+        alt={videoDetail.author_name}
+      />
       <div className="video-detail__detail">
         <h5>{videoDetail.title}</h5>
-        <a href={videoDetail.author_url} target="_blank">
+        <a
+          href={videoDetail.author_url}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           {videoDetail.author_name}
         </a>
       </div>

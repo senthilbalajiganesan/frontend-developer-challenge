@@ -15,7 +15,7 @@ const App: React.FC = () => {
       <PersistGate loading={null} persistor={persistor}>
         <div className="app">
           <AddVideoContainer />
-          {/* <VideoPlaylistContainer /> */}
+          <VideoPlaylistContainer />
         </div>
       </PersistGate>
     </Provider>
