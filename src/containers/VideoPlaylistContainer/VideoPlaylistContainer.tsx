@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import ReactPlayer from "react-player";
 import "./VideoPlaylistContainer.scss";
-import { IReduxStateModel, IProps } from "./Type";
+import { IReduxStateModel, IReduxActionModel, IProps } from "./Type";
+import { onVideoEndedAction } from "./Action";
 import { connect } from "react-redux";
 import { YOUTUBE_BASE_URL } from "utils";
 import VideoDetail from "components/VideoDetail/VideoDetail";
@@ -15,16 +16,22 @@ class VideoPlaylist extends Component<IProps, {}> {
           className="video-player"
           url={`${YOUTUBE_BASE_URL}${currentVideo}`}
           controls
-          // playing
+          playing
           onEnded={() => {
-            console.log("Video completed running");
+            this.props.onVideoEndedAction(this.props.videoList);
           }}
         />
-        <div className="playlist">
-          {videoList.map((video: string, index: number) => (
-            <VideoDetail key={index} videoDetail={videoListDetail[video]} />
-          ))}
-        </div>
+        {videoList.length === 0 ? (
+          <div className="playlist">
+            <p>Please start adding Videos</p>
+          </div>
+        ) : (
+          <div className="playlist">
+            {videoList.map((video: string, index: number) => (
+              <VideoDetail key={index} videoDetail={videoListDetail[video]} />
+            ))}
+          </div>
+        )}
       </div>
     );
   }
@@ -33,6 +40,6 @@ class VideoPlaylist extends Component<IProps, {}> {
 const mapStateToProps = ({ playerlist }: { playerlist: IReduxStateModel }) => {
   return { ...playerlist };
 };
-const mapDispatchToProps = {};
+const mapDispatchToProps: IReduxActionModel = { onVideoEndedAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoPlaylist);

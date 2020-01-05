@@ -27,7 +27,8 @@ class AddVideoContainer extends Component<IProps, {}> {
       urlText,
       metaData,
       videoList,
-      videoListDetail
+      videoListDetail,
+      onUrlTextChangeAction
     } = this.props;
     onAddVideoAction(
       parseVideoId(urlText) as string,
@@ -35,6 +36,7 @@ class AddVideoContainer extends Component<IProps, {}> {
       videoList,
       videoListDetail
     );
+    onUrlTextChangeAction("");
   };
 
   render() {

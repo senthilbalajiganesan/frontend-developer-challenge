@@ -1,3 +1,4 @@
+import { onVideoEndedAction } from "./Action";
 
 export interface IVideoDetail {
   thumbnail_url: string;
@@ -12,6 +13,11 @@ export interface IReduxStateModel {
   currentVideo: string;
 }
 
-export type IProps = IReduxStateModel;
+export interface IReduxActionModel {
+  onVideoEndedAction: typeof onVideoEndedAction;
+}
+
+export type IProps = IReduxStateModel & IReduxActionModel;
 
 export const ON_ADD_VIDEO = "on_add_video";
+export const ON_END_VIDEO = "on_end_video";
