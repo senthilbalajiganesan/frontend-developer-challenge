@@ -21,6 +21,11 @@ export default (props: IProps) => {
           {videoDetail.author_name}
         </a>
       </div>
+      {props.remove && (
+        <div className="video-detail__remove" onClick={props.onRemove}>
+          X
+        </div>
+      )}
     </div>
   );
 };

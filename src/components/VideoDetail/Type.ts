@@ -7,4 +7,6 @@ export interface IVideoDetail {
 
 export interface IProps {
   videoDetail: IVideoDetail;
+  remove?: boolean;
+  onRemove?: () => void;
 }
