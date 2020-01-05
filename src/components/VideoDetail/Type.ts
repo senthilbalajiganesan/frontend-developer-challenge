@@ -1,4 +1,4 @@
-export interface IVideDetail {
+export interface IVideoDetail {
   thumbnail_url: string;
   title: string;
   author_url: string;
@@ -6,5 +6,5 @@ export interface IVideDetail {
 }
 
 export interface IProps {
-  videoDetail: IVideDetail;
+  videoDetail: IVideoDetail;
 }

@@ -8,7 +8,6 @@ export const tabSync = (store: any) => (next: any) => (action: any) => {
         try {
           if (event.key !== "persist:root") {
             let crossTabAction = JSON.parse(event.newValue);
-            console.log(crossTabAction);
             store.dispatch(crossTabAction);
           }
         } catch (err) {}

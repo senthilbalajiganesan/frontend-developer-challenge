@@ -8,6 +8,7 @@ import {
   onAddVideoAction,
   setListenerAction
 } from "./Action";
+import { Loader, VideoDetail } from "components";
 
 class AddVideoContainer extends Component<IProps, {}> {
   componentDidMount() {
@@ -16,7 +17,6 @@ class AddVideoContainer extends Component<IProps, {}> {
 
   onChangeText = (event: any) => {
     this.props.onUrlTextChangeAction(event.target.value);
-    this.props.toggleUrlErrorAction(false);
   };
 
   handleSubmit = () => {
@@ -24,7 +24,7 @@ class AddVideoContainer extends Component<IProps, {}> {
   };
 
   render() {
-    const { urlText, isUrlTextError } = this.props;
+    const { urlText, isUrlTextError, isMetaLoading, metaData } = this.props;
     return (
       <div className="add-video-block">
         <input
@@ -32,10 +32,18 @@ class AddVideoContainer extends Component<IProps, {}> {
           value={urlText}
           onChange={this.onChangeText}
         />
-        {isUrlTextError && <p className="danger">URL is invalid!</p>}
-        <button onClick={this.handleSubmit} className="btn">
-          Fetch Meta & Add
-        </button>
+        {isMetaLoading && <Loader />}
+        {metaData && (
+          <div>
+            <VideoDetail videoDetail={metaData} />
+          </div>
+        )}
+        {isUrlTextError && urlText && <p className="danger">URL is invalid!</p>}
+        {!isMetaLoading && !isUrlTextError && urlText && (
+          <button onClick={this.handleSubmit} className="btn">
+            Add to Queue
+          </button>
+        )}
       </div>
     );
   }
