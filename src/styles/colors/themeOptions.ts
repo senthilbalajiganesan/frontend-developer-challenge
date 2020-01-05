@@ -11,7 +11,7 @@ export const themeOptions = [
   },
   {
     "--bg-primary": "#2f2f2f",
-    "--bg-secondary": "#656065",
+    "--bg-secondary": "#36393f",
     "--bg-ternary": "#0c0b0b",
     "--element": "#1890ff",
     "--text-primary": "#ffffff",

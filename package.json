@@ -10,7 +10,8 @@
     "react-player": "^1.14.2",
     "react-redux": "^7.1.3",
     "react-scripts": "3.3.0",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@types/node": "^12.12.24",

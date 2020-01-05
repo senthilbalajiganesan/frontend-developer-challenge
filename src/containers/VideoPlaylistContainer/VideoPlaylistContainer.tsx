@@ -22,7 +22,7 @@ class VideoPlaylist extends Component<IProps, {}> {
         />
         <div className="playlist">
           {videoList.map((video: string, index: number) => (
-            <VideoDetail videoDetail={videoListDetail[video]} />
+            <VideoDetail key={index} videoDetail={videoListDetail[video]} />
           ))}
         </div>
       </div>

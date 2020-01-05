@@ -1,19 +1,41 @@
 import React, { Component } from "react";
 import "./AddVideoContainer.scss";
 import { connect } from "react-redux";
-import { IReduxStateModel, IProps } from "./Type";
-import { onUrlTextChangeAction } from "./Action";
+import { IReduxStateModel, IProps, IReduxActionModel } from "./Type";
+import {
+  onUrlTextChangeAction,
+  toggleUrlErrorAction,
+  onAddVideoAction,
+  setListenerAction
+} from "./Action";
 
 class AddVideoContainer extends Component<IProps, {}> {
+  componentDidMount() {
+    this.props.setListenerAction();
+  }
+
   onChangeText = (event: any) => {
     this.props.onUrlTextChangeAction(event.target.value);
+    this.props.toggleUrlErrorAction(false);
   };
+
+  handleSubmit = () => {
+    this.props.onAddVideoAction(this.props.urlText);
+  };
+
   render() {
     const { urlText, isUrlTextError } = this.props;
     return (
-      <div>
-        <input value={urlText} onChange={this.onChangeText} />
+      <div className="add-video-block">
+        <input
+          placeholder={"Please Enter a valid URL"}
+          value={urlText}
+          onChange={this.onChangeText}
+        />
         {isUrlTextError && <p className="danger">URL is invalid!</p>}
+        <button onClick={this.handleSubmit} className="btn">
+          Fetch Meta & Add
+        </button>
       </div>
     );
   }
@@ -23,8 +45,11 @@ const mapStateToProps = ({ addVideo }: { addVideo: IReduxStateModel }) => {
   return { ...addVideo };
 };
 
-const mapDispatchToProps = {
-  onUrlTextChangeAction: onUrlTextChangeAction
+const mapDispatchToProps: IReduxActionModel = {
+  onUrlTextChangeAction,
+  toggleUrlErrorAction,
+  onAddVideoAction,
+  setListenerAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddVideoContainer);
