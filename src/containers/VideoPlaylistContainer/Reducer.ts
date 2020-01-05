@@ -1,20 +1,7 @@
-import { IReduxStateModel } from "./Type";
+import { IReduxStateModel, ON_ADD_VIDEO } from "./Type";
 
 const INITIAL_STATE: IReduxStateModel = {
-  videoList: [
-    "XnK5mG5u8Hg",
-    "XnK5mG5u8Hg",
-    "XnK5mG5u8Hg",
-    "XnK5mG5u8Hg",
-    "XnK5mG5u8Hg",
-    "XnK5mG5u8Hg",
-    "XnK5mG5u8Hg",
-    "XnK5mG5u8Hg",
-    "XnK5mG5u8Hg",
-    "XnK5mG5u8Hg",
-    "XnK5mG5u8Hg",
-    "XnK5mG5u8Hg"
-  ],
+  videoList: [],
   videoListDetail: {
     XnK5mG5u8Hg: {
       thumbnail_url: "https://i.ytimg.com/vi/XnK5mG5u8Hg/hqdefault.jpg",
@@ -28,6 +15,12 @@ const INITIAL_STATE: IReduxStateModel = {
 
 export default (state = INITIAL_STATE, action: any) => {
   switch (action.type) {
+    case ON_ADD_VIDEO:
+      return {
+        ...state,
+        videoList: action.payload.videoList,
+        videoListDetail: action.payload.videoListDetail
+      };
     default:
       return state;
   }

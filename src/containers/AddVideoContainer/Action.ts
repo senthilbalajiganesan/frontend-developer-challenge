@@ -70,12 +70,6 @@ export const onMetaFetchSuccess = (videoDetail: IVideoDetail | null) => {
   };
 };
 
-export const onAddVideoAction = (url: string): any => {
-  return {
-    type: ""
-  };
-};
-
 export const setListenerAction = () => {
   return {
     type: ADD_STORAGE_LISTENER

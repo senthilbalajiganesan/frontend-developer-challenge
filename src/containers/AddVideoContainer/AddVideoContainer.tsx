@@ -5,10 +5,12 @@ import { IReduxStateModel, IProps, IReduxActionModel } from "./Type";
 import {
   onUrlTextChangeAction,
   toggleUrlErrorAction,
-  onAddVideoAction,
   setListenerAction
 } from "./Action";
+import { onAddVideoAction } from "containers/VideoPlaylistContainer/Action";
 import { Loader, VideoDetail } from "components";
+import { parseVideoId } from "utils";
+import { IReduxStateModel as IVideoPlaylistState } from "containers/VideoPlaylistContainer/Type";
 
 class AddVideoContainer extends Component<IProps, {}> {
   componentDidMount() {
@@ -20,7 +22,19 @@ class AddVideoContainer extends Component<IProps, {}> {
   };
 
   handleSubmit = () => {
-    this.props.onAddVideoAction(this.props.urlText);
+    const {
+      onAddVideoAction,
+      urlText,
+      metaData,
+      videoList,
+      videoListDetail
+    } = this.props;
+    onAddVideoAction(
+      parseVideoId(urlText) as string,
+      metaData,
+      videoList,
+      videoListDetail
+    );
   };
 
   render() {
@@ -49,8 +63,14 @@ class AddVideoContainer extends Component<IProps, {}> {
   }
 }
 
-const mapStateToProps = ({ addVideo }: { addVideo: IReduxStateModel }) => {
-  return { ...addVideo };
+const mapStateToProps = ({
+  addVideo,
+  playerlist
+}: {
+  addVideo: IReduxStateModel;
+  playerlist: IVideoPlaylistState;
+}) => {
+  return { ...addVideo, ...playerlist };
 };
 
 const mapDispatchToProps: IReduxActionModel = {

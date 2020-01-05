@@ -2,9 +2,10 @@ import { IVideoDetail } from "components/VideoDetail/Type";
 import {
   onUrlTextChangeAction,
   toggleUrlErrorAction,
-  onAddVideoAction,
   setListenerAction
 } from "./Action";
+import { onAddVideoAction } from "containers/VideoPlaylistContainer/Action";
+import { IReduxStateModel as IVideoPlaylistState } from "containers/VideoPlaylistContainer/Type";
 
 export const TOGGLE_URL_TEXT_ERROR = "toggle_url_text_error";
 export const ON_CHANGE_URL_TEXT = "on_change_url_text";
@@ -26,4 +27,4 @@ export interface IReduxActionModel {
   setListenerAction: typeof setListenerAction;
 }
 
-export type IProps = IReduxStateModel & IReduxActionModel;
+export type IProps = IReduxStateModel & IReduxActionModel & IVideoPlaylistState;

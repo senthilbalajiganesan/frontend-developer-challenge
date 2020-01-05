@@ -1,4 +1,5 @@
-export interface IVideDetail {
+
+export interface IVideoDetail {
   thumbnail_url: string;
   title: string;
   author_url: string;
@@ -7,7 +8,7 @@ export interface IVideDetail {
 
 export interface IReduxStateModel {
   videoList: string[];
-  videoListDetail: { [key: string]: IVideDetail };
+  videoListDetail: { [key: string]: IVideoDetail };
   currentVideo: string;
 }
 
